@@ -1,0 +1,23 @@
+{
+  "name": "Imperium LARP",
+  "version": "0.0.0",
+  "description": "Imperium LARP.",
+  "main": "bin/www",
+  "moduleType": [
+    "node"
+  ],
+  "authors": [
+    "Ronaldo Hoch"
+  ],
+  "license": "PRIVATE",
+  "homepage": "Imperium LARP",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}

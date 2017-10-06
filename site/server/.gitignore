@@ -1,0 +1,4 @@
+node_modules
+public/vendor
+app/views/index_bkp.html
+public/img_old

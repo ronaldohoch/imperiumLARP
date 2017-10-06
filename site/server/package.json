@@ -1,0 +1,29 @@
+{
+  "name": "ImperiumLARP",
+  "version": "1.0.0",
+  "description": "Imperium LARP.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://dev@45.55.227.3:/home/dev/leman.com.git"
+  },
+  "author": "Ronaldo Hoch",
+  "license": "PRIVATE",
+  "dependencies": {
+    "gulp-concat": "^2.6.0",
+    "gulp-sass": "^2.0.4",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.2.0",
+    "gulp-uglifycss": "^1.0.4",
+    "swig": "^1.4.2",
+    "gulp-plumber": "^1.0.1",
+    "bower": "^1.4.1",
+    "gulp": "^3.9.0",
+    "express": "^4.8.8",
+    "express-load": "^1.1.14"
+  }
+}
