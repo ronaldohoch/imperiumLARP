@@ -15,11 +15,11 @@ var gulp = require("gulp"),
 gulp.task("less",function(){
 	gulp.src(src.localLESS)
 		.pipe(less())
-		.pipe(sourcemaps.init())
+		// .pipe(sourcemaps.init())
 			.pipe(plumber())
 			.pipe(uglifycss())
 			.pipe(concat('custom.css'))
-		.pipe(sourcemaps.write())
+		// .pipe(sourcemaps.write())
 		.pipe(gulp.dest(src.localLESSDest));
 });
 gulp.task("watch",function(){
