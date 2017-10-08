@@ -1,12 +1,14 @@
 (function(){
     'use strict';
 
+    customEvents();
     setSizes();
+    setResizeEvent();
     initParticle();
 
     function setSizes(){
         var particle = document.getElementById("particleJS");
-        particle.style.width = (window.innerWidth-20)+"px";
+        particle.style.width = (window.innerWidth-17)+"px";
         particle.style.height = window.innerHeight+"px";
     };
     function initParticle(){
@@ -120,5 +122,33 @@
             },
             "retina_detect": true
           })
-    }    
+    }
+    function customEvents(){
+      //https://developer.mozilla.org/pt-BR/docs/Web/Events/resize
+      var throttle = function(type, name, obj) {
+        obj = obj || window;
+        var running = false;
+        var func = function() {
+            if (running) { return; }
+            running = true;
+             requestAnimationFrame(function() {
+                obj.dispatchEvent(new CustomEvent(name));
+                running = false;
+            });
+        };
+        obj.addEventListener(type, func);
+      };
+      /* init - you can init any event */
+      throttle("resize", "optimizedResize");
+    }
+    function setResizeEvent(){
+      window.addEventListener("optimizedResize", function() {
+        setSizes();
+        //quando o resize acontece o canvas fica achatado ou espremido
+        //estas linhas fazem com que a animação reinicie
+        //mantendo o tamanho da imagem
+        pJSDom[0].pJS.particles.move.enable = true;
+        pJSDom[0].pJS.fn.particlesRefresh();
+      });
+    }
 })();

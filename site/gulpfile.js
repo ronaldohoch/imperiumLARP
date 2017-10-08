@@ -7,10 +7,10 @@ var gulp = require("gulp"),
 	sourcemaps = require('gulp-sourcemaps'),
 	concat = require("gulp-concat"),
 	src = {};
-	src.localLESSWatch = "../public/styles/less/*.less";
-	src.localLESS = "../public/styles/less/main.less";
-	src.localLESSDest = "../public/styles/css";
-	src.localJS = "../public/styles/js/*.js";
+	src.localLESSWatch = "public/styles/less/*.less";
+	src.localLESS = "public/styles/less/main.less";
+	src.localLESSDest = "public/styles/css";
+	src.localJS = "public/styles/js/*.js";
 
 gulp.task("less",function(){
 	gulp.src(src.localLESS)
@@ -22,7 +22,7 @@ gulp.task("less",function(){
 		// .pipe(sourcemaps.write())
 		.pipe(gulp.dest(src.localLESSDest));
 });
-gulp.task("watch",function(){
+gulp.task("watch",['less'],function(){
 	gulp.watch([src.localLESSWatch], ['less']);
 });
 gulp.task("default",['less'])
