@@ -10,11 +10,13 @@
         .image-block{float:left;}
         .text-block{float:right;}
     }
-    > div{
+    > div:not(.hide-on-mobile){
         width:50%;
         height:400px;
     }
     .image-block{
+        width:50%;
+        height:400px;
         .anime();
         &:hover{
             background-position: 50% 70%;

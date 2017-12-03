@@ -6,6 +6,7 @@
     }
     h2{
         font-size:2.5em;
+        a{color:#000;}
     }
     ul{
         width:100%;
@@ -49,6 +50,41 @@
         }
     }
 }
+
+.modal{
+    &.open{
+        opacity:1;
+        display:block;
+        animation: opacity 300ms;
+    }
+    display: none;
+    opacity: 0;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.3);
+    .anime();
+    .modal-body{
+        max-width:90%;
+        margin:auto;
+        height:80%;
+        position:absolute;
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
+        background:#fff;
+    }
+}
+
+@keyframes opacity {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+
 // .tomes{
 //     ul{
 //         width:100%;

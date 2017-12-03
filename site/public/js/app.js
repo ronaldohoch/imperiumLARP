@@ -5,10 +5,12 @@
     setSizes();
     setResizeEvent();
     initParticle();
+    eventListeners();
 
     function setSizes(){
         var particle = document.getElementById("particleJS");
-        particle.style.width = (window.innerWidth-17)+"px";
+        debugger;
+        particle.style.width = (window.innerWidth>600?(window.innerWidth-17):window.innerWidth)+"px";
         particle.style.height = window.innerHeight+"px";
     };
     function initParticle(){
@@ -150,5 +152,17 @@
         pJSDom[0].pJS.particles.move.enable = true;
         pJSDom[0].pJS.fn.particlesRefresh();
       });
+    }
+    function eventListeners(){
+      var modalLinks = document.getElementsByClassName("modalLinks");
+      modalLinks.addEventListener("click",openModal);
+    }
+    function openModal(){
+      var modal = document.getElementById("infos-modal");
+      modal.className += " open";
+    }
+    function closeModal(){
+      var modal = document.getElementById("infos-modal");
+      modal.className = modal.className.replace(/\bopen\b/,'');
     }
 })();
