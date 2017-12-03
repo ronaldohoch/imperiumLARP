@@ -9,7 +9,6 @@
 
     function setSizes(){
         var particle = document.getElementById("particleJS");
-        debugger;
         particle.style.width = (window.innerWidth>600?(window.innerWidth-17):window.innerWidth)+"px";
         particle.style.height = window.innerHeight+"px";
     };
