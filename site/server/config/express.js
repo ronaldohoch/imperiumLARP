@@ -7,7 +7,7 @@ module.exports = function(){
 	var app = express();
 
 	//configura a porta do servidor
-	app.set("port",3000);
+	app.set("port",process.env.PORT || 3000);
 	//middleware para arquivos estáticos
 	app.use(express.static("public"));
 	//Aqui é onde o Swig faz as magias negras!
