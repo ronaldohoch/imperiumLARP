@@ -177,39 +177,34 @@
       var Shuffle = window.Shuffle;
       var element = document.querySelector('.shuffle-tomes');
       var sizer = element.querySelector('.shuffle-tomes li:first-child');
-      var tomeLinks = document.getElementsByClassName(".shuffle-tomes li a");
-      var filters = [];
-
-      // Overrideable options
-      Shuffle.options = {
-        buffer: 0, // Useful for percentage based heights when they might not always be exactly the same (in pixels).
-        columnThreshold: 0.01, // Reading the width of elements isn't precise enough and can cause columns to jump between values.
-        columnWidth: 0, // A static number or function that returns a number which tells the plugin how wide the columns are (in pixels).
-        delimeter: null, // If your group is not json, and is comma delimeted, you could set delimeter to ','.
-        easing: 'cubic-bezier(0.4, 0.0, 0.2, 1)', // CSS easing function to use.
-        filterMode: Shuffle.FilterMode.ANY, // When using an array with filter(), the element passes the test if any of its groups are in the array. With "all", the element only passes if all groups are in the array.
-        group: Shuffle.ALL_ITEMS, // Initial filter group.
-        gutterWidth: 0, // A static number or function that tells the plugin how wide the gutters between columns are (in pixels).
-        initialSort: null, // Shuffle can be initialized with a sort object. It is the same object given to the sort method.
-        isCentered: false, // Attempt to center grid items in each row.
-        itemSelector: '*', // e.g. '.picture-item'.
-        roundTransforms: true, // Whether to round pixel values used in translate(x, y). This usually avoids blurriness.
-        sizer: null, // Element or selector string. Use an element to determine the size of columns and gutters.
-        speed: 250, // Transition/animation speed (milliseconds).
-        staggerAmount: 15, // Transition delay offset for each item in milliseconds.
-        staggerAmountMax: 150, // Maximum stagger delay in milliseconds.
-        throttleTime: 300, // How often shuffle can be called on resize (in milliseconds).
-        useTransforms: true, // Whether to use transforms or absolute positioning.
-      };
-      
+      var filterLinks = document.getElementsByClassName("filter-links");
+      var filters = [];     
       var shuffleInstance = new Shuffle(element, {
         itemSelector: '.shuffle-tomes li'
       });
+  
+      function applyFilters(filters){
+        shuffleInstance.filter(filters);
+      }
 
-      
-      for(var i=0;i<tomeLinks.length;i++){
-        tomeLinks[i].addEventListener("click",function(){
+      for(var i=0;i<filterLinks.length;i++){
+        filterLinks[i].addEventListener('click',function(e){
+          e.preventDefault();
+          var filter = this.dataset.filter;
+    
+          if(this.className.indexOf('filtered')>-1){
+            this.className = this.className.replace(/\bfiltered\b/,'');
+          }else{
+            this.className += " filtered";
+          }
           
+          if(filters.indexOf(filter)>-1){
+            filters.splice(filters.indexOf(filter),1);
+            applyFilters(filters);
+            return
+          }
+          filters.push(filter);
+          applyFilters(filters);
         });
       }
     }
