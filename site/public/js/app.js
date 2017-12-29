@@ -160,13 +160,24 @@
       }
 
       var close = document.getElementById("closeModal");
-      close.addEventListener("click",closeModal);
-
+      debugger;
+      close.addEventListener("click",function(e){return closeModal(e)});
     }
-    function openModal(){
+    function openModal(obj){
       var el = this;
       var modal = document.getElementById("infosModal");
       modal.className += " open";
+      
+      console.log("obj",obj);
+
+      new Vue({
+        el:'#infosModal',
+        data:{
+          title:obj.title,
+          subtitle:obj.subtitle,
+          text:obj.text
+        }
+      });
     }
     function closeModal(e){
       e.preventDefault();
@@ -208,7 +219,6 @@
         });
       }
     }
-
     function doRequest(e,endpoint){
       e.preventDefault();
       axios({
@@ -217,8 +227,7 @@
         url:'/textos/'+endpoint
       })
         .then(function (response) {
-          console.log(response);
-          openModal()
+          openModal(response.data)
         })
         .catch(function (error) {
           console.log(error);
