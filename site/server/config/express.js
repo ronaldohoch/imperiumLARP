@@ -1,6 +1,7 @@
 var express = require("express"),
 	swig = require("swig"),
 	path = require("path"),
+	bodyParser = require('body-parser'),
 	load = require("express-load");
 
 module.exports = function(){
@@ -10,6 +11,11 @@ module.exports = function(){
 	app.set("port",process.env.PORT || 3100);
 	//middleware para arquivos estáticos
 	app.use(express.static("public"));
+	//to support JSON-encoded bodies
+	app.use( bodyParser.json() );
+	app.use(function (req, res, next) {
+		next();
+	})
 	//Aqui é onde o Swig faz as magias negras!
 	app.engine("html",swig.renderFile);
 	app.set("view engine","html");

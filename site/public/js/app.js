@@ -152,18 +152,25 @@
       var modalLinks = document.getElementsByClassName("modal-links");
       
       for(var i=0;i<modalLinks.length;i++){
-        modalLinks[i].addEventListener("click",openModal);
+        modalLinks[i].addEventListener("click",function(e){
+          e.preventDefault();
+
+          return doRequest(e,this.dataset.text);
+        });
       }
 
+      var close = document.getElementById("closeModal");
+      close.addEventListener("click",closeModal);
+
     }
-    function openModal(e){
-      e.preventDefault();
+    function openModal(){
       var el = this;
-      var modal = document.getElementById("infos-modal");
+      var modal = document.getElementById("infosModal");
       modal.className += " open";
     }
-    function closeModal(){
-      var modal = document.getElementById("closeModal");
+    function closeModal(e){
+      e.preventDefault();
+      var modal = document.getElementById("infosModal");
       modal.className = modal.className.replace(/\bopen\b/,'');
     }
     function initShuffle(){
@@ -202,10 +209,16 @@
       }
     }
 
-    function doRequest(){
-      axios.get('/user?ID=12345')
+    function doRequest(e,endpoint){
+      e.preventDefault();
+      axios({
+        method:'get',
+        responseType: 'json',
+        url:'/textos/'+endpoint
+      })
         .then(function (response) {
           console.log(response);
+          openModal()
         })
         .catch(function (error) {
           console.log(error);
