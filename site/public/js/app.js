@@ -1,13 +1,6 @@
 (function(){
     'use strict';
 
-    customEvents();
-    setSizes();
-    setResizeEvent();
-    initParticle();
-    eventListeners();
-    initShuffle();
-
     function setSizes(){
         var particle = document.getElementById("particleJS");
         particle.style.width = (window.innerWidth>600?(window.innerWidth-17):window.innerWidth)+"px";
@@ -170,7 +163,7 @@
       modal.className += " open";
     }
     function closeModal(){
-      var modal = document.getElementById("infos-modal");
+      var modal = document.getElementById("closeModal");
       modal.className = modal.className.replace(/\bopen\b/,'');
     }
     function initShuffle(){
@@ -208,4 +201,21 @@
         });
       }
     }
+
+    function doRequest(){
+      axios.get('/user?ID=12345')
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+
+    customEvents();
+    setSizes();
+    setResizeEvent();
+    initParticle();
+    eventListeners();
+    initShuffle();
 })();
