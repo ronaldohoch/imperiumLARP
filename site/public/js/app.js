@@ -158,17 +158,11 @@
           return doRequest(e,this.dataset.text);
         });
       }
-
-      var close = document.getElementById("closeModal");
-      debugger;
-      close.addEventListener("click",function(e){return closeModal(e)});
     }
     function openModal(obj){
       var el = this;
       var modal = document.getElementById("infosModal");
       modal.className += " open";
-      
-      console.log("obj",obj);
 
       new Vue({
         el:'#infosModal',
@@ -178,11 +172,17 @@
           text:obj.text
         }
       });
+
+      var close = document.getElementById("closeModal");
+      close.addEventListener("click",function(e){return closeModal(e)});
     }
     function closeModal(e){
       e.preventDefault();
       var modal = document.getElementById("infosModal");
       modal.className = modal.className.replace(/\bopen\b/,'');
+
+      var close = document.getElementById("closeModal");
+      close.removeEventListener("click", function(){});
     }
     function initShuffle(){
       var Shuffle = window.Shuffle;
