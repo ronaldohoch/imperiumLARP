@@ -176,7 +176,6 @@
       }
     }
     function openModal(obj){
-      var el = this;
       var modal = document.getElementById("infosModal");
       modal.className += " open";
 
