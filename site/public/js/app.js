@@ -170,9 +170,6 @@
           return doRequest(e,this.dataset.text);
         });
       }
-
-      // var close = document.getElementById("closeModal");
-      // close.addEventListener("click",function(e){return closeModal(e)});
     }
     function openModal(obj){
       var el = this;
@@ -188,6 +185,9 @@
       e.preventDefault();
       var modal = document.getElementById("infosModal");
       modal.className = modal.className.replace(/\bopen\b/,'');
+
+      var close = document.getElementById("closeModal");
+      close.removeEventListener("click", function(){});
     }
     function initShuffle(){
       var Shuffle = window.Shuffle;
