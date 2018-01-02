@@ -1,5 +1,17 @@
 (function(){
     'use strict';
+    
+    var vm = new Vue({
+      el:'#infosModal',
+      data:{
+        modalTitle:"",
+        modalSubtitle:"",
+        modalText:""
+      },
+      methods:{
+        closeModal:closeModal
+      }
+    });
 
     function setSizes(){
         var particle = document.getElementById("particleJS");
@@ -159,25 +171,18 @@
         });
       }
 
-      var close = document.getElementById("closeModal");
-      debugger;
-      close.addEventListener("click",function(e){return closeModal(e)});
+      // var close = document.getElementById("closeModal");
+      // close.addEventListener("click",function(e){return closeModal(e)});
     }
     function openModal(obj){
       var el = this;
       var modal = document.getElementById("infosModal");
       modal.className += " open";
-      
-      console.log("obj",obj);
 
-      new Vue({
-        el:'#infosModal',
-        data:{
-          title:obj.title,
-          subtitle:obj.subtitle,
-          text:obj.text
-        }
-      });
+      vm.modalTitle = obj.title,
+      vm.modalSubtitle = obj.subtitle,
+      vm.modalText = obj.text
+      
     }
     function closeModal(e){
       e.preventDefault();
