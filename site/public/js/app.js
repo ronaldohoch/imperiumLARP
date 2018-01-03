@@ -242,6 +242,11 @@
           console.log(error);
         });
     }
+    function loadGoogleMaps(){
+      var url = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3461.3255446076123!2d-51.265616384890045!3d-29.826023681962234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9519612d2deccdcd%3A0x5bd329681dcda587!2sEstrada+Cap%C3%A3o+da+Uni%C3%A3o%2C+70%2C+Nova+Santa+Rita+-+RS%2C+92480-000!5e0!3m2!1spt-BR!2sbr!4v1514919193689';
+      var iframe = document.getElementById("googleMap");
+      iframe.src=url;
+    }
 
     customEvents();
     setSizes();
@@ -249,4 +254,5 @@
     initParticle();
     eventListeners();
     initShuffle();
+    loadGoogleMaps();
 })();
