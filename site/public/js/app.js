@@ -199,8 +199,7 @@
     };
     }
     function closeModal(e){
-
-      e&&e.hasOwnProperty("preventDefault")?e.preventDefault():null;
+      e?e.preventDefault():null;
       var modal = document.getElementById("infosModal");
       modal.className = modal.className.replace(/\bopen\b/,'');
 
