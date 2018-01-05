@@ -15,7 +15,12 @@
         modalText:""
       },
       methods:{
-        closeModal:closeModal
+        closeModal:closeModal,
+        closeModalByOverlay:function(e){
+          if(e.target.id==="infosModal"){
+            closeModal();
+          }
+        }
       }
     });
 
@@ -184,10 +189,18 @@
       vm.modalTitle = obj.title,
       vm.modalSubtitle = obj.subtitle,
       vm.modalText = obj.text
-      
+
+      document.onkeydown = function(evt) {
+        evt = evt || window.event;
+        if (evt.keyCode == 27) {
+            closeModal();
+            document.onkeydown = undefined;
+        }
+    };
     }
     function closeModal(e){
-      e.preventDefault();
+
+      e&&e.hasOwnProperty(preventDefault)?e.preventDefault():null;
       var modal = document.getElementById("infosModal");
       modal.className = modal.className.replace(/\bopen\b/,'');
 
