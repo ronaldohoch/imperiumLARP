@@ -4,11 +4,11 @@
     }
 }
 .tomes{
-    font-family: "Patrick Hand SC", Helvetica, sans-serif;
+    // font-family: 'Patrick Hand SC', Helvetica, sans-serif;
     span,
-    h2{
-        font-family: "Patrick Hand SC", Helvetica, sans-serif;
-    }
+    // h2{
+    //     font-family: 'Patrick Hand SC', Helvetica, sans-serif;
+    // }
     h2{
         font-size:2.5em;
         a{color:#000;}
@@ -52,8 +52,8 @@
     .anime();
     .close-modal{
         position: absolute;
-        top: 20px;
-        right: 20px;
+        top: 25px;
+        right: 35px;
         height: 40px;
         width: 40px;
         font-size: 0px;
@@ -64,13 +64,18 @@
         max-height:518px;
         max-width:65%;
         margin:auto;
+        padding:25px;
         position:absolute;
         top:0;
         bottom:0;
         left:0;
         right:0;
-        background-color: #9c854b;
-        background-image: url("https://www.transparenttextures.com/patterns/clean-gray-paper.png");
+        background-color: #cab070;
+        background-image: url("../../img/clean-gray-paper.png");
+        background-attachment: local;
+
+        max-height:520;
+        overflow:overlay;
         /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
         /*
         background-color: #9c854b;
@@ -81,13 +86,13 @@
         */
     }
     .modal-header{
-        padding:20px 20px 0px 20px;
+        margin-bottom:20px;
         height:68px;
     }
     .modal-body{
-        padding:0px 20px 20px 20px;
-        max-height:450px;
-        overflow:overlay;
+        p{
+            font-family: 'Patrick Hand SC', Helvetica, sans-serif;
+        }
     }
 }
 
