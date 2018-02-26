@@ -26,7 +26,7 @@
 
     function setSizes(){
         var particle = document.getElementById("particleJS");
-        particle.style.width = (window.innerWidth>600?(window.innerWidth-17):window.innerWidth)+"px";
+        // particle.style.width = (window.innerWidth>600?(window.innerWidth-17):window.innerWidth)+"px";
         particle.style.height = window.innerHeight+"px";
     };
     function initParticle(){
@@ -265,6 +265,6 @@
     setResizeEvent();
     initParticle();
     eventListeners();
-    initShuffle();
+    // initShuffle();
     loadGoogleMaps();
 })();
